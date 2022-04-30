@@ -26,14 +26,14 @@ def decrypt_key(encrypted_key):
     response = kms_client.decrypt(CiphertextBlob=encrypted_key)
     return base64.b64encode((response['Plaintext']))
 
-def decrypt_file(file, encrypted_key):
-    f = open(file)
-    file_contents = f.read()
-    data_key = decrypt_key(encrypted_key)
-    filen = Fernet(data_key)
-    file_contents_decrypted = filen.decrypt(bytes((file_contents), 'utf-8'))
-
-    f.write(file_contents_decrypted)
+# decryption key needs work
+# def decrypt_file(file, encrypted_key):
+#   f = open(file)
+#    file_contents = f.read()
+#   data_key = decrypt_key(encrypted_key)
+#   filen = Fernet(data_key)
+#   file_contents_decrypted = filen.decrypt(bytes((file_contents), 'utf-8'))
+#   f.write(file_contents_decrypted)
 
 os.chdir("C:\\Users\\andre\\Documents\\Python personal\\python-encryption")
 create_key('arn:aws:kms:eu-central-1:329080927726:key/0fc53ee3-ea51-4afe-aa34-170dfc351bcf')
